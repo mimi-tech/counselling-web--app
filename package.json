@@ -1,0 +1,27 @@
+{
+  "name": "faith",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
+    "axios": "^1.7.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^2.7.1",
+    "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "nexmo": "^2.5.1",
+    "node-fetch": "^3.3.2",
+    "socket.io": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=10.6.0 <=14.18.1"
+  }
+}

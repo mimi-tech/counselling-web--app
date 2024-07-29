@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Faith - Church Template | Home</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../public/style.css">
+    <style>
+         * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+   
+         body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://github.com/user-attachments/assets/208df897-f07e-432e-9495-110affad22da');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+    }
+        .centered {
+         
+         margin-top: 100px;
+         
+         color: white;
+         display: flex;
+         margin-left: 100px;
+          align-items: center;
+        width: 50%;
+          flex-direction: column;
+          color: white;
+          font-size: large;
+          
+        }
+        .verse {
+          margin: 10px 0;
+          line-height: 30px;
+        
+        }
+        .fixed-heading {
+      position: fixed;   /* Fixed position */
+      top: 0;            /* Stick to the top of the viewport */
+      left: 0;           /* Align to the left of the viewport */
+      width: 100%;       /* Full width */
+      background-color: #400200; /* Example background color */
+      color: white;      /* Example text color */
+      padding: 20px;     /* Padding for better readability */
+      z-index: 1000;     /* Ensure it's above other content */
+    }
+    .back-arrow{
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 10px;
+        transition: color 0.3s ease-in-out;
+  
+    }
+
+  
+
+      </style>
+</head>
+
+<body>
+    
+
+<div class="centered">
+    <div class="row">
+        <div class="col-12 col-lg-2"> </div>
+        <div class="col-12 col-lg-6">
+            <div class="fixed-heading">
+                
+            <h5><a href="/" class="back-arrow">&#8592;</a> Welcome to Daily Bible Verses. Inspiration from the Holy Scriptures </h5>
+</div>
+    <% if (bibleData) { %>
+      <h1><%= bibleData.reference %></h1>
+      <% if (bibleData.verses && bibleData.verses.length > 0) { %>
+        <% bibleData.verses.forEach(verse => { %>
+          <div class="verse">
+            <p><strong style="color: yellowgreen;"><span >Verse</span>:<%= verse.verse %></strong></p>
+            <p><%= verse.text %></p>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <p>No verses available</p>
+      <% } %>
+    <% } else { %>
+      <p>No data available</p>
+    <% } %>
+  </div>
+  <div class="col-12 col-lg-2"> </div>
+        </div>
+    </div>
+
+</body>
+</html>
