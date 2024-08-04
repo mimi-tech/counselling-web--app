@@ -76,7 +76,10 @@
              
               <div class="contact-form-area">
                 <h5>Tell it to Jesus Christ</h5>
-                  <span>(We respond to you within 24hrs)</span>
+                <div id="submit-bible-verse">
+                  <p id="submit-verse-reference" style="font-weight: bold; color:#400200 ;"></p>
+                  <p id="submit-verse-text"></p>
+                        </div>
                 <div id="result" style="color:red"></div>
                 <div id="success" style="color:green"></div>
                 <br/>
@@ -88,7 +91,7 @@
                                     <input type="email" class="form-control" id="userEmail" placeholder="E-mail" name="email" >
                                   </div>
                                   <div class="form-group">
-                                    <input type="tel" class="form-control" id="userPhone" placeholder="Phone Number" name="zip" >
+                                    <input type="tel" class="form-control" id="userPhone" placeholder="Phone Number preferred whatsapp number" name="zip" >
                                   </div>
 
                                   <div class="form-group">
@@ -353,15 +356,18 @@
                                     <input type="radio" id="r2" name="rdoName" value="Female">
                                     <label for="r2" class="gender">Female</label>
                                   </div>
-                                  <p>How do you want to get our reply:</p>
-                                  <div class="form-group " >
-                                  <input type="radio" id="r1" name="rdoF" value="sms"> sms
-                                  <input type="radio" id="r2" name="rdoF" value="email"> email
-                                  <input type="radio" id="r3" name="rdoF" value="email"> Phone Call or whatsapp call
+                                  <p>Select the date and time you want to speak with us either Saturday or Sunday.</p>
+                              
+                                  <div class="form-group">
+                                      <input type="date" class="form-control" id="userDate">
                                   </div>
 
                                   <div class="form-group">
-                                  <textarea  id="userMessage"  class="form-control" cols="30" rows="5" placeholder="Message" maxlength="500" ></textarea>
+                                    <input type="time" class="form-control" id="userTime">
+                                </div>
+
+                                  <div class="form-group">
+                                  <textarea  id="userMessage"  class="form-control" cols="30" rows="5" placeholder="Message" maxlength="2000" ></textarea>
 
                                   </div>
 

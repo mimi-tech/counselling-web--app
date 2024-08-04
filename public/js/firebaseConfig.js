@@ -4,13 +4,13 @@ import { getFirestore, collection, addDoc } from "https://www.gstatic.com/fireba
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBvcAgXfFBnL53uZRMar8xiWeKdKbNECig",
-  authDomain: "deus-curat.firebaseapp.com",
-  projectId: "deus-curat",
-  storageBucket: "deus-curat.appspot.com",
-  messagingSenderId: "482187601771",
-  appId: "1:482187601771:web:f8bee0992f297a59508e2e",
-  measurementId: "G-JMDXP2T50B"
+  apiKey: "AIzaSyDUA52j_ymehKAy7IEdb5gqxJNFKbQZ_XY",
+  authDomain: "deuscurat-admin.firebaseapp.com",
+  projectId: "deuscurat-admin",
+  storageBucket: "deuscurat-admin.appspot.com",
+  messagingSenderId: "959794755644",
+  appId: "1:959794755644:web:026e35a5def60b4878eb39",
+  measurementId: "G-1NM9F07B3F"
 };
 
 // Initialize Firebase

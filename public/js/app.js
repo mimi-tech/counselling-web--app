@@ -1,9 +1,26 @@
 import { db, collection, addDoc } from './firebaseConfig.js';
-
+async function bible(){
+  try{
+    document.getElementById('verse-text').innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading...';
+    fetch('https://christ-comfort-ede21236a94b.herokuapp.com/random-verse') // Replace with your proxy server URL
+        .then(response => response.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error('Error fetching the Bible verse:', error);
+            document.getElementById('verse-reference').textContent = "Love must be completely sincere. Hate what is evil, hold on to what is good.";
+            document.getElementById('verse-text').textContent = "Romans 12 : 9";
+        });
+      }catch(e){
+        document.getElementById('verse-reference').textContent = "Love must be completely sincere. Hate what is evil, hold on to what is good.";
+            document.getElementById('verse-text').textContent = "Romans 12 : 9";
+      }
+}
 document.addEventListener('DOMContentLoaded', () => {
   try{
   document.getElementById('verse-text').innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading...';
-  fetch('https://christ-comfort.web.app/random-verse') // Replace with your proxy server URL
+  fetch('https://christ-comfort-ede21236a94b.herokuapp.com/random-verse') // Replace with your proxy server URL
       .then(response => response.json())
       .then(data => {
           document.getElementById('verse-reference').textContent = data.reference;
@@ -15,14 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
           document.getElementById('verse-text').textContent = "Romans 12 : 9";
       });
     }catch(e){
-      console.error('Error fetching the Bible verse:', e);
       document.getElementById('verse-reference').textContent = "Love must be completely sincere. Hate what is evil, hold on to what is good.";
           document.getElementById('verse-text').textContent = "Romans 12 : 9";
     }
 });
 // Function to add data to Firestore
 const submitBtn = document.querySelector('#submit');
-async function addItem(userNameInput, userEmailInput, userPhoneInput, userMessageInput, userCountry, fvalue, dateTime, value, userStateInput) {
+async function addItem(userNameInput, userEmailInput, userPhoneInput, userMessageInput, userCountry, fvalue, dateTime, value, userStateInput, userDateInput,userTimeInput) {
   try {
     document.getElementById("result").innerHTML = '';
     submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Sending...';
@@ -32,14 +48,23 @@ async function addItem(userNameInput, userEmailInput, userPhoneInput, userMessag
       email: userEmailInput,
       phone: userPhoneInput,
       city: userCountry,
-      feedback: fvalue,
       message: userMessageInput,
       datetime: dateTime,
       sex: value,
       state: userStateInput,
+      seen: "No",
+      replied: "No",
+      reply:"Nothing yet",
+      userDate: userDateInput.toString(),
+      userTime: userTimeInput.toString(),
     });
-    console.log("Document written with ID: ", docRef.id);
-    document.getElementById("success").innerHTML = 'Successful, we will get back to you immediately';
+    fetch('https://christ-comfort-ede21236a94b.herokuapp.com/random-verse') // Replace with your proxy server URL
+      .then(response => response.json())
+      .then(data => {
+          document.getElementById('submit-verse-reference').textContent = data.reference;
+          document.getElementById('submit-verse-text').textContent = data.text;
+      })
+    document.getElementById("success").innerHTML = 'Successful, we look forward speaking with you soon!'; 
     submitBtn.innerHTML = "Contact us";
   } catch (e) {
     console.error("Error adding document: ", e);
@@ -63,6 +88,8 @@ let userPhone = document.querySelector('#userPhone');
 let userMessage = document.querySelector('#userMessage');
 let country = document.querySelector('#country');
 let userState = document.querySelector('#userState');
+let userTime = document.querySelector('#userTime');
+let userDate = document.querySelector('#userDate');
 submitBtn.addEventListener('click', function() {
   let userNameInput = userName.value;
   let userEmailInput = userEmail.value;
@@ -70,9 +97,14 @@ submitBtn.addEventListener('click', function() {
   let userMessageInput = userMessage.value;
   let userCountry = country.value;
   let userStateInput = userState.value;
+  let userDateInput = userDate.value;
+  let userTimeInput = userTime.value;
 
   var value = $("input:radio[name=rdoName]:checked").val();
   var fvalue = $("input:radio[name=rdoF]:checked").val();
+
+  const selectedDate = new Date(userDateInput);
+  const day = selectedDate.getUTCDay();
 
   if (userNameInput==null || userNameInput==""){
     document.getElementById("result").innerHTML = 'Please provide your full name: only alphabet';
@@ -98,15 +130,33 @@ submitBtn.addEventListener('click', function() {
     document.getElementById("result").innerHTML = 'Please which State are you from?';
     userState.focus();
   
+  } else if (userDateInput == undefined || userDateInput==""){
+    document.getElementById("result").innerHTML = 'Please select the date you want to speak with us';
+    userDate.focus();
+  
+  }else if (day != 0 && day != 6){
+    document.getElementById("result").innerHTML = 'Please select either Saturday or Sunday';
+    userDate.focus();
+   }else if (userTimeInput == undefined || userTimeInput==""){
+    document.getElementById("result").innerHTML = 'Please select the time you want to speak with us';
+    userTime.focus();
+  
   }else {
-    console.log(12233333);
-     addItem(userNameInput, userEmailInput, userPhoneInput, userMessageInput, userCountry, fvalue, dateTime, value, userStateInput);
-     console.log("fish");
+     addItem(
+      userNameInput,
+      userEmailInput, 
+      userPhoneInput, 
+      userMessageInput, 
+      userCountry, 
+      fvalue, 
+      dateTime, 
+      value, 
+      userStateInput,
+      userDateInput,
+      userTimeInput
+    );
     }
 });
-
-
-
 
     document.addEventListener('DOMContentLoaded', () => {
       const audioPlayers = document.querySelectorAll('.audio-player');
