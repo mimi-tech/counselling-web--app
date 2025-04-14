@@ -16,6 +16,6 @@ app.use('/', routes);
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, function(){
-  console.log("server running at port 3001");
+  console.log("server running at port 8001");
 });
 
