@@ -20,7 +20,7 @@ async function bible(){
 document.addEventListener('DOMContentLoaded', () => {
   try{
   document.getElementById('verse-text').innerHTML = '<i class="fa fa-spinner fa-spin"></i> Loading...';
-  fetch('https://christ-comfort-ede21236a94b.herokuapp.com/random-verse') // Replace with your proxy server URL
+  fetch('https://counselling-web-app.onrender.com/random-verse') // Replace with your proxy server URL
       .then(response => response.json())
       .then(data => {
           document.getElementById('verse-reference').textContent = data.reference;
@@ -58,7 +58,7 @@ async function addItem(userNameInput, userEmailInput, userPhoneInput, userMessag
       userDate: userDateInput.toString(),
       userTime: userTimeInput.toString(),
     });
-    fetch('https://christ-comfort-ede21236a94b.herokuapp.com/random-verse') // Replace with your proxy server URL
+    fetch('https://counselling-web-app.onrender.com/random-verse') // Replace with your proxy server URL
       .then(response => response.json())
       .then(data => {
           document.getElementById('submit-verse-reference').textContent = data.reference;
